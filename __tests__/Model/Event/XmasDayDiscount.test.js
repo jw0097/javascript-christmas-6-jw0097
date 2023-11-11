@@ -20,8 +20,14 @@ describe("XmasDdayDiscount 클래스 테스트", () => {
       [2, 1100],
       [24, 3300],
       [25, 3400],
-      [26, 0],
-      [30, 0],
+    ])("%s가 인자로 들어오면 %s를 반환해야 한다.", (date, discount) => {
+      const discountAmount = xmasDdayDiscount.implement({ date });
+      expect(discountAmount.xmasDdayDiscount).toBe(discount);
+    });
+
+    test.each([
+      [26, undefined],
+      [30, undefined],
     ])("%s가 인자로 들어오면 %s를 반환해야 한다.", (date, discount) => {
       const discountAmount = xmasDdayDiscount.implement({ date });
       expect(discountAmount).toBe(discount);
