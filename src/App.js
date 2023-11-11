@@ -1,5 +1,9 @@
+import RestaurantEvent from "./Model/Event/RestaurantEvent.js";
+
 class App {
-  async run() {}
+  async run() {
+    const myEvent = new RestaurantEvent();
+  }
 }
 
 export default App;
