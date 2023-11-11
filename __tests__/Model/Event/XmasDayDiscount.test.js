@@ -9,8 +9,22 @@ describe("XmasDdayDiscount 클래스 테스트", () => {
     expect(xmasDdayDiscount instanceof RestaurantEvent).toBe(true);
   });
 
-  test("XmasDdayDiscount는 implement 메서드를 오버라이딩 해야 한다.", () => {
-    const date = 25;
-    expect(() => xmasDdayDiscount.implement({ date })).not.toThrow(Error);
+  describe("implement 메서드 테스트", () => {
+    test("XmasDdayDiscount는 implement 메서드를 오버라이딩 해야 한다.", () => {
+      const date = 25;
+      expect(() => xmasDdayDiscount.implement({ date })).not.toThrow(Error);
+    });
+
+    test.each([
+      [1, 1000],
+      [2, 1100],
+      [24, 3300],
+      [25, 3400],
+      [26, 0],
+      [30, 0],
+    ])("%s가 인자로 들어오면 %s를 반환해야 한다.", (date, discount) => {
+      const discountAmount = xmasDdayDiscount.implement({ date });
+      expect(discountAmount).toBe(discount);
+    });
   });
 });
