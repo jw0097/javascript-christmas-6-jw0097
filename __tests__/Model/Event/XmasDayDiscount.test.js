@@ -20,7 +20,7 @@ describe("XmasDdayDiscount 클래스 테스트", () => {
       [2, 1100],
       [24, 3300],
       [25, 3400],
-    ])("%s가 인자로 들어오면 %s를 반환해야 한다.", (date, discount) => {
+    ])("%s일이 인자로 들어오면 %s를 반환해야 한다.", (date, discount) => {
       const discountAmount = xmasDdayDiscount.implement({ date });
       expect(discountAmount.xmasDdayDiscount).toBe(discount);
     });
@@ -28,7 +28,7 @@ describe("XmasDdayDiscount 클래스 테스트", () => {
     test.each([
       [26, undefined],
       [30, undefined],
-    ])("%s가 인자로 들어오면 %s를 반환해야 한다.", (date, discount) => {
+    ])("25일 보다 큰 날짜가 인자로 들어오면 반환값이 없어야 한다.", (date, discount) => {
       const discountAmount = xmasDdayDiscount.implement({ date });
       expect(discountAmount).toBe(discount);
     });
