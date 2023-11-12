@@ -1,5 +1,5 @@
-import Giveaway from "../../../src/Model/Event/GiveAway";
-import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent";
+import Giveaway from "../../../src/Model/Event/GiveAway.js";
+import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
 
 let giveaway;
 describe("Giveaway 클래스 테스트", () => {

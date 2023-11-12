@@ -1,5 +1,5 @@
-import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent";
-import XmasDdayDiscount from "../../../src/Model/Event/XmasDdayDiscount";
+import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
+import XmasDdayDiscount from "../../../src/Model/Event/XmasDdayDiscount.js";
 let xmasDdayDiscount;
 describe("XmasDdayDiscount 클래스 테스트", () => {
   beforeEach(() => {

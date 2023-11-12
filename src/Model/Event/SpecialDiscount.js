@@ -1,5 +1,5 @@
-import { STAR_DAY } from "../../constant/restaurant";
-import RestaurantEvent from "./RestaurantEvent";
+import { STAR_DAY } from "../../constant/restaurant.js";
+import RestaurantEvent from "./RestaurantEvent.js";
 
 class SpecialDiscount extends RestaurantEvent {
   implement({ date }) {

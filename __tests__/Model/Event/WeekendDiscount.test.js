@@ -1,5 +1,5 @@
-import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent";
-import WeekendDiscount from "../../../src/Model/Event/WeekendDiscount";
+import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
+import WeekendDiscount from "../../../src/Model/Event/WeekendDiscount.js";
 
 let weekendDiscount;
 describe("WeekendDiscount 클래스 테스트", () => {

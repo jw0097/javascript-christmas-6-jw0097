@@ -1,4 +1,4 @@
-import RestaurantEvent from "./RestaurantEvent";
+import RestaurantEvent from "./RestaurantEvent.js";
 
 class Giveaway extends RestaurantEvent {
   implement({ totalAmount }) {

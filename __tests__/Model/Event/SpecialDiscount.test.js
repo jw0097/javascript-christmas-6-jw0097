@@ -1,5 +1,5 @@
-import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent";
-import SpecialDiscount from "../../../src/Model/Event/SpecialDiscount";
+import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
+import SpecialDiscount from "../../../src/Model/Event/SpecialDiscount.js";
 
 let specialDiscount;
 describe("SpecialDiscount 클래스 테스트", () => {

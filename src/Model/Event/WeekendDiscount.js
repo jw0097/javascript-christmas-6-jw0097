@@ -1,5 +1,5 @@
-import { MAIN_DISH, WEEKEND } from "../../constant/restaurant";
-import RestaurantEvent from "./RestaurantEvent";
+import { MAIN_DISH, WEEKEND } from "../../constant/restaurant.js";
+import RestaurantEvent from "./RestaurantEvent.js";
 
 class WeekendDiscount extends RestaurantEvent {
   implement({ date, menuList }) {
