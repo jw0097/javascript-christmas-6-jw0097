@@ -6,6 +6,15 @@ const InputView = {
     const date = await Console.readLineAsync(INPUT_MESSAGE.date);
     return Number(date);
   },
+
+  async readMenuList() {
+    const menuListInput = await Console.readLineAsync(INPUT_MESSAGE.menuList);
+    return menuListInput.split(",").reduce((menuList, menuWithCount) => {
+      const [menu, count] = menuWithCount.trim().split("-");
+      if (menu && count) menuList[menu.trim()] = Number(count);
+      return menuList;
+    }, {});
+  },
 };
 
 export default InputView;

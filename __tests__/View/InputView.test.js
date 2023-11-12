@@ -36,7 +36,7 @@ describe("InputView 객체 테스트", () => {
       expect(Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.menuList);
     });
 
-    test("readMenuList 메서드가 promise를 반환하고 그 resolve 값이 입력값이어야 한다.", () => {
+    test("readMenuList 메서드가 promise를 반환하고 그 resolve 값이 입력값이어야 한다.", async () => {
       const menuListInput = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
       const expectedMenuList = {
         티본스테이크: 1,
@@ -47,7 +47,7 @@ describe("InputView 객체 테스트", () => {
       const resolvedPromise = Promise.resolve(menuListInput);
       Console.readLineAsync.mockReturnValue(resolvedPromise);
 
-      const menuList = InputView.readMenuList();
+      const menuList = await InputView.readMenuList();
       expect(menuList).toEqual(expectedMenuList);
     });
   });
