@@ -1,8 +1,10 @@
 import { Console } from "@woowacourse/mission-utils";
-import InputView from "../../src/View/InputView";
-import { INPUT_MESSAGE } from "../../src/constant/message";
+import InputView from "../../src/View/InputView.js";
+import { INPUT_MESSAGE } from "../../src/constant/message.js";
 
-desribe("InputView 객체 테스트", () => {
+Console.readLineAsync = jest.fn();
+
+describe("InputView 객체 테스트", () => {
   describe("readDate 메서드 테스트", () => {
     test("readDate 메서드가 존재해야 한다.", () => {
       expect(typeof InputView.readDate).toBe("function");
