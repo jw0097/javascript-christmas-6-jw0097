@@ -34,7 +34,7 @@ describe("SpecialDiscount 클래스 테스트", () => {
       [30, undefined],
     ])("달력에 별이 없는 날을 인자로 받으면 반환값이 없어야 한다.", (date, discount) => {
       const discountAmount = specialDiscount.implement({ date });
-      expect(discountAmount.specialDiscount).toBe(discount);
+      expect(discountAmount).toBe(discount);
     });
   });
 });
