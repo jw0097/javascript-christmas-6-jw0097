@@ -2,6 +2,8 @@ export const WEEKDAY = Object.freeze([0, 1, 2, 3, 4]);
 
 export const WEEKEND = Object.freeze([5, 6]);
 
+export const STAR_DAY = Object.freeze([3, 10, 17, 24, 25, 31]);
+
 export const APPETIZER = Object.freeze({
   양송이수프: 6000,
   타파스: 5500,
