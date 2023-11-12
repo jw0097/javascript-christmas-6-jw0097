@@ -1,5 +1,5 @@
-import Customer from "./Customer";
-
+import Customer from "./Customer.js";
+import { Console } from "@woowacourse/mission-utils";
 class Restaurant {
   #events;
 
@@ -12,8 +12,8 @@ class Restaurant {
     this.#badgeAward = badgeAward;
   }
 
-  makeOrder({ date, menuList }) {
-    this.#customer = new Customer({ date, menuList });
+  saveCustomerInfo(orderInfo) {
+    this.#customer = new Customer(orderInfo);
   }
 }
 
