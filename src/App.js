@@ -25,10 +25,10 @@ class App {
   }
 
   async #takeOrder() {
-    const orderDate = await InputView.readDate();
-    const orderMenuList = await InputView.readMenuList();
+    const date = await InputView.readDate();
+    const menuList = await InputView.readMenuList();
 
-    this.#restaurant.makeOrder({ date: orderDate, menuList: orderMenuList });
+    this.#restaurant.makeOrder({ date, menuList });
   }
 }
 
