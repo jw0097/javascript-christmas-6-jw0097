@@ -13,15 +13,12 @@ class Restaurant {
     this.#badgeAward = badgeAward;
   }
 
-  saveCustomerInfo(orderInfo) {
-    this.#customer = new Customer(orderInfo);
-  }
-
   implementEvent({ date, menuList }) {
     const totalAmount = this.#calculateTotalAmount(menuList);
     const eventImplementInfo = this.#getEventImplementInfo({ date, menuList, totalAmount });
     const eventImplementAmount = this.#calculateEventImplementAmount(eventImplementInfo);
     const badgeAwardInfo = this.#getBadgeAwardInfo(eventImplementAmount);
+    this.#saveCustomerInfo({ date, menuList, badgeAwardInfo });
 
     return { totalAmount, ...eventImplementInfo, eventImplementAmount, ...badgeAwardInfo };
   }
@@ -48,6 +45,10 @@ class Restaurant {
 
   #getBadgeAwardInfo(eventImplementAmount) {
     return this.#badgeAward.implement(eventImplementAmount);
+  }
+
+  #saveCustomerInfo({ date, menuList, badgeAwardInfo }) {
+    this.#customer = new Customer({ date, menuList, badgeAwardInfo });
   }
 }
 

@@ -1,4 +1,4 @@
-import { BADGE_AWARD_CONDITION } from "../../constant/restaurant";
+import { BADGE_AWARD_CONDITION } from "../../constant/restaurant.js";
 
 class BadgeAward {
   implement(eventImplementAmount) {

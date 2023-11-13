@@ -26,8 +26,7 @@ class App {
 
   async #implementEvent() {
     const orderInfo = await this.#takeOrder();
-    this.#restaurant.saveCustomerInfo(orderInfo);
-    this.#restaurant.implementEvent(orderInfo);
+    const eventImplementInfo = this.#restaurant.implementEvent(orderInfo);
   }
 
   async #takeOrder() {
