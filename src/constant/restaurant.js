@@ -27,3 +27,20 @@ export const BEVERAGE = Object.freeze({
   레드와인: 60000,
   샴페인: 25000,
 });
+
+export const ALL_MENU = Object.freeze({
+  ...APPETIZER,
+  ...MAIN_DISH,
+  ...DESSERT,
+  ...BEVERAGE,
+});
+
+export const RESTAURANT = Object.freeze({
+  giveaway: "샴페인",
+});
+
+export const BADGE_AWARD_CONDITION = Object.freeze({
+  산타: [20000, Infinity],
+  트리: [10000, 20000],
+  별: [5000, 10000],
+});
