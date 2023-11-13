@@ -7,6 +7,10 @@ class Customer {
   constructor(orderInfo) {
     this.#orderInfo = orderInfo;
   }
+
+  setBadge(badge) {
+    this.#badge = badge;
+  }
 }
 
 export default Customer;
