@@ -6,6 +6,8 @@ import WeekendDiscount from "./Model/Event/WeekendDiscount.js";
 import XmasDdayDiscount from "./Model/Event/XmasDdayDiscount.js";
 import Restaurant from "./Model/Restaurant.js";
 import InputView from "./View/InputView.js";
+import OutputView from "./View/OutputView.js";
+import { OUTPUT_MESSAGE } from "./constant/message.js";
 
 class App {
   // DI, 1월에 이벤트 정책이 바뀌어도 이 부분만 수정하면 된다.
@@ -25,7 +27,9 @@ class App {
   }
 
   async #implementEvent() {
+    OutputView.printMessage(OUTPUT_MESSAGE.welcome);
     const orderInfo = await this.#takeOrder();
+    OutputView.printMessage(OUTPUT_MESSAGE.beforeEventInfo);
     const eventImplementInfo = this.#restaurant.implementEvent(orderInfo);
   }
 
