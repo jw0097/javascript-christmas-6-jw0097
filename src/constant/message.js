@@ -14,3 +14,9 @@ export const OUTPUT_MESSAGE = Object.freeze({
   totalAmountAfterDiscount: "\n<할인 후 예상 결제 금액>\n",
   badgeAward: "\n<12월 이벤트 배지>\n",
 });
+
+export const ERROR_MESSAGE = Object.freeze({
+  common: "[ERROR] ",
+  date: "유효하지 않은 날짜입니다. 다시 입력해 주세요.",
+  menu: "유효하지 않은 주문입니다. 다시 입력해 주세요.",
+});
