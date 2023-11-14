@@ -22,6 +22,7 @@ describe("InputView 객체 테스트", () => {
     });
 
     test("readDate 메서드가 호출되면 Console.readLineAsync가 호출되야 한다.", () => {
+      Console.readLineAsync.mockReturnValue("25");
       InputView.readDate();
       expect(Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.date);
     });
