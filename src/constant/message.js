@@ -1,3 +1,5 @@
+import { EOL as LINE_SEPARATOR } from "os";
+
 export const INPUT_MESSAGE = Object.freeze({
   date: "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)\n",
   menuList: "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)\n",
@@ -9,7 +11,7 @@ export const OUTPUT_MESSAGE = Object.freeze({
   menuList: "\n<주문 메뉴>\n",
   totalAmount: "\n<할인 전 총주문 금액>\n",
   giveaway: "\n<증정 메뉴>\n",
-  detailImplement: "\n<혜택 내역>\n",
+  detailImplement: LINE_SEPARATOR + "<혜택 내역>" + LINE_SEPARATOR,
   eventImplementAmount: "\n<총혜택 금액>\n",
   totalAmountAfterDiscount: "\n<할인 후 예상 결제 금액>\n",
   badgeAward: "\n<12월 이벤트 배지>\n",

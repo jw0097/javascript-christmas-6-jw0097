@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import OutputView from "../../src/View/OutputView";
+import OutputView from "../../src/View/OutputView.js";
+import { EOL as LINE_SEPARATOR } from "os";
 
 Console.print = jest.fn();
 
@@ -49,9 +50,7 @@ describe("OutputView 객체 테스트", () => {
         "",
         "<증정 메뉴>",
         "샴페인 1개",
-        "",
-        "<혜택 내역>",
-        "크리스마스 디데이 할인: -1,200원",
+        LINE_SEPARATOR + "<혜택 내역>" + LINE_SEPARATOR + "크리스마스 디데이 할인: -1,200원",
         "평일 할인: -4,046원",
         "특별 할인: -1,000원",
         "증정 이벤트: -25,000원",

@@ -35,10 +35,30 @@ class App {
   }
 
   async #takeOrder() {
-    const date = await InputView.readDate();
-    const menuList = await InputView.readMenuList();
+    const date = await this.#getOrderDate();
+    const menuList = await this.#getOrderMenu();
 
     return { date, menuList };
+  }
+
+  async #getOrderDate() {
+    try {
+      return await InputView.readDate();
+    } catch (error) {
+      OutputView.printMessage(error.message);
+
+      return await this.#getOrderDate();
+    }
+  }
+
+  async #getOrderMenu() {
+    try {
+      return await InputView.readMenuList();
+    } catch (error) {
+      OutputView.printMessage(error.message);
+
+      return await this.#getOrderMenu();
+    }
   }
 }
 

@@ -1,5 +1,5 @@
-import { ERROR_MESSAGE } from "../constant/message";
-import { BEVERAGE } from "../constant/restaurant";
+import { ERROR_MESSAGE } from "../constant/message.js";
+import { BEVERAGE } from "../constant/restaurant.js";
 import {
   DuplicatedError,
   InvalidCountFormatError,
@@ -10,7 +10,7 @@ import {
   NotIntegerError,
   NotNumberError,
   OnlyBeverageError,
-} from "./Error";
+} from "./Error.js";
 
 export const DATE_VALIDATOR = Object.freeze({
   noInput(date) {
@@ -29,12 +29,7 @@ export const DATE_VALIDATOR = Object.freeze({
     if (!Number.isInteger(Number(date))) throw new NotIntegerError();
   },
 });
-// const expectedMenuList = {
-//     티본스테이크: 1,
-//     바비큐립: 1,
-//     초코케이크: 2,
-//     제로콜라: 1,
-//   };
+
 export const MENU_VALIDATOR = Object.freeze({
   noInput({ menuListObject }) {
     if (Object.keys(menuListObject).length === 0) throw new NoInputError(ERROR_MESSAGE.menu);
