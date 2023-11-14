@@ -28,9 +28,10 @@ class App {
 
   async #implementEvent() {
     OutputView.printMessage(OUTPUT_MESSAGE.welcome);
-    const orderInfo = await this.#takeOrder();
+    const { date, menuList } = await this.#takeOrder();
     OutputView.printMessage(OUTPUT_MESSAGE.beforeEventInfo);
-    const eventImplementInfo = this.#restaurant.implementEvent(orderInfo);
+    const eventImplementInfo = this.#restaurant.implementEvent({ date, menuList });
+    OutputView.printEventImplementInfo({ menuList, eventImplementInfo });
   }
 
   async #takeOrder() {

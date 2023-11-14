@@ -5,5 +5,12 @@ export const INPUT_MESSAGE = Object.freeze({
 
 export const OUTPUT_MESSAGE = Object.freeze({
   welcome: "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.",
-  beforeEventInfo: "12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n",
+  beforeEventInfo: "12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!",
+  menuList: "\n<주문 메뉴>\n",
+  totalAmount: "\n<할인 전 총주문 금액>\n",
+  giveaway: "\n<증정 메뉴>\n",
+  detailImplement: "\n<혜택 내역>\n",
+  eventImplementAmount: "\n<총혜택 금액>\n",
+  totalAmountAfterDiscount: "\n<할인 후 예상 결제 금액>\n",
+  badgeAward: "\n<12월 이벤트 배지>\n",
 });

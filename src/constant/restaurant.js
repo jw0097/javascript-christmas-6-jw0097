@@ -44,3 +44,18 @@ export const BADGE_AWARD_CONDITION = Object.freeze({
   트리: [10000, 20000],
   별: [5000, 10000],
 });
+
+export const EVENT_LIST = Object.freeze({
+  xmasDdayDiscount: "크리스마스 디데이 할인",
+  weekendDiscount: "주말 할인",
+  weekdayDiscount: "평일 할인",
+  specialDiscount: "특별 할인",
+  giveaway: "증정 이벤트",
+});
+
+export const DISCOUNT_EVENT_LIST = Object.freeze([
+  "xmasDdayDiscount",
+  "weekendDiscount",
+  "weekdayDiscount",
+  "specialDiscount",
+]);
