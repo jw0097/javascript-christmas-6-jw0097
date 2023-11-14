@@ -74,5 +74,37 @@ describe("InputView 객체 테스트", () => {
       const menuList = await InputView.readMenuList();
       expect(menuList).toEqual(expectedMenuList);
     });
+
+    test.each([
+      ["아무 입력이 없다면 NoInputError", "", NoInputError],
+      [
+        "메뉴의 개수가 정수인 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
+        "타파스-1,제로콜라-1.5 ",
+        InvalidCountFormatError,
+      ],
+      [
+        "메뉴의 개수가 정수인 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
+        "타파스-1,제로콜라-0 ",
+        InvalidCountFormatError,
+      ],
+      [
+        "메뉴의 개수가 정수인 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
+        "타파스-1,제로콜라-7 ",
+        InvalidCountFormatError,
+      ],
+      ["입력 형식이 정확하지 않으면 InvalidFormatError", "타파스:1,제로콜라-1 ", InvalidFormatError],
+      ["입력 형식이 정확하지 않으면 InvalidFormatError", "타파스-1,제로콜라-1, 초코케이크3 ", InvalidFormatError],
+      ["중복된 메뉴가 입력되면 DuplicatedError", "타파스-1,제로콜라-1, 타파스-1", DuplicatedError],
+      ["음료만 주문하면 OnlyBeverageError", "레드와인-1,제로콜라-1 ", OnlyBeverageError],
+      [
+        "20개 이상의 메뉴가 주문되면 InvalidCountRangeError",
+        "티본스테이크-5,바비큐립-7,초코케이크-5,제로콜라-10",
+        InvalidCountRangeError,
+      ],
+    ])("%s를 throw 해야 한다.", async (description, menu, error) => {
+      Console.readLineAsync.mockReturnValue(menu);
+
+      await expect(InputView.readMenuList()).rejects.toThrow(error);
+    });
   });
 });
