@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from "../constant/message.js";
-import { BEVERAGE } from "../constant/restaurant.js";
+import { ALL_MENU, BEVERAGE } from "../constant/restaurant.js";
 import {
   DuplicatedError,
   InvalidCountFormatError,
@@ -8,6 +8,7 @@ import {
   InvalidNumberError,
   NoInputError,
   NotIntegerError,
+  NotMenuError,
   NotNumberError,
   OnlyBeverageError,
 } from "./Error.js";
@@ -33,6 +34,14 @@ export const DATE_VALIDATOR = Object.freeze({
 export const MENU_VALIDATOR = Object.freeze({
   noInput({ menuListObject }) {
     if (Object.keys(menuListObject).length === 0) throw new NoInputError(ERROR_MESSAGE.menu);
+  },
+
+  notMenu({ menuListObject }) {
+    const isMenu = Object.keys(menuListObject).every((menu) => {
+      return Object.keys(ALL_MENU).includes(menu);
+    });
+
+    if (!isMenu) throw new NotMenuError();
   },
 
   InvalidFormatError({ menuListInput }) {

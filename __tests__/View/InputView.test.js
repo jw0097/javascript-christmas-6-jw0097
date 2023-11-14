@@ -9,6 +9,7 @@ import {
   InvalidNumberError,
   NoInputError,
   NotIntegerError,
+  NotMenuError,
   NotNumberError,
   OnlyBeverageError,
 } from "../../src/utils/Error.js";
@@ -79,6 +80,7 @@ describe("InputView 객체 테스트", () => {
 
     test.each([
       ["아무 입력이 없다면 NoInputError", "", NoInputError],
+      ["메뉴에 없는 음식을 입력하면 NotMenuError", " 타파스-1,제로콜라-1, 라면-1 ", NotMenuError],
       ["입력 형식이 정확하지 않으면 InvalidFormatError", " 타파스-:1,제로콜라-1 ", InvalidFormatError],
       ["입력 형식이 정확하지 않으면 InvalidFormatError", "   타파스-1,제로콜라-1, 초코케이크3 ", InvalidFormatError],
       ["입력 형식이 정확하지 않으면 InvalidFormatError", "   타파스-1,제로콜라-0 1, 초코케이크-3 ", InvalidFormatError],

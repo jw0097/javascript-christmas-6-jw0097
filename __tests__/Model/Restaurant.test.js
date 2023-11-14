@@ -13,7 +13,13 @@ let restaurant;
 describe("Restaurant 클래스 테스트", () => {
   beforeEach(() => {
     restaurant = new Restaurant({
-      events: [new XmasDdayDiscount(), new WeekdayDiscount(), new WeekendDiscount(), new SpecialDiscount(), new Giveaway()],
+      events: [
+        new XmasDdayDiscount(),
+        new WeekdayDiscount(),
+        new WeekendDiscount(),
+        new SpecialDiscount(),
+        new Giveaway(),
+      ],
       badgeAward: new BadgeAward(),
     });
   });
