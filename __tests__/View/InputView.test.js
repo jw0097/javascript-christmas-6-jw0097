@@ -57,6 +57,7 @@ describe("InputView 객체 테스트", () => {
     });
 
     test("readMenuList 메서드가 호출되면 Console.readLineAsync가 호출되야 한다.", () => {
+      Console.readLineAsync.mockReturnValue("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
       InputView.readMenuList();
       expect(Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.menuList);
     });
@@ -78,25 +79,16 @@ describe("InputView 객체 테스트", () => {
 
     test.each([
       ["아무 입력이 없다면 NoInputError", "", NoInputError],
+      ["입력 형식이 정확하지 않으면 InvalidFormatError", " 타파스-:1,제로콜라-1 ", InvalidFormatError],
+      ["입력 형식이 정확하지 않으면 InvalidFormatError", "   타파스-1,제로콜라-1, 초코케이크3 ", InvalidFormatError],
+      ["입력 형식이 정확하지 않으면 InvalidFormatError", "   타파스-1,제로콜라-0 1, 초코케이크-3 ", InvalidFormatError],
       [
-        "메뉴의 개수가 정수인 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
-        "타파스-1,제로콜라-1.5 ",
+        "메뉴의 개수가 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
+        " 타파스 -  1,제로콜라 - 0,   ",
         InvalidCountFormatError,
       ],
-      [
-        "메뉴의 개수가 정수인 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
-        "타파스-1,제로콜라-0 ",
-        InvalidCountFormatError,
-      ],
-      [
-        "메뉴의 개수가 정수인 1 이상의 숫자로 입력되지 않으면 InvalidCountFormatError",
-        "타파스-1,제로콜라-7 ",
-        InvalidCountFormatError,
-      ],
-      ["입력 형식이 정확하지 않으면 InvalidFormatError", "타파스:1,제로콜라-1 ", InvalidFormatError],
-      ["입력 형식이 정확하지 않으면 InvalidFormatError", "타파스-1,제로콜라-1, 초코케이크3 ", InvalidFormatError],
-      ["중복된 메뉴가 입력되면 DuplicatedError", "타파스-1,제로콜라-1, 타파스-1", DuplicatedError],
-      ["음료만 주문하면 OnlyBeverageError", "레드와인-1,제로콜라-1 ", OnlyBeverageError],
+      ["중복된 메뉴가 입력되면 DuplicatedError", " 타파스-1,제로콜라-1, 타파스-1,", DuplicatedError],
+      ["음료만 주문하면 OnlyBeverageError", "  레드와인-1,제로콜라-1,  ", OnlyBeverageError],
       [
         "20개 이상의 메뉴가 주문되면 InvalidCountRangeError",
         "티본스테이크-5,바비큐립-7,초코케이크-5,제로콜라-10",
