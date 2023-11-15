@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { DATE_VALIDATOR, MENU_VALIDATOR } from "../utils/validation.js";
-import { INPUT_MESSAGE } from "../constant/message.js";
+import { INPUT_MESSAGE, MESSAGE_FACTOR } from "../constant/message.js";
 
 const InputView = {
   async readDate() {
@@ -15,8 +15,8 @@ const InputView = {
 
   async readMenuList() {
     const menuListInput = await Console.readLineAsync(INPUT_MESSAGE.menuList);
-    const menuListObject = menuListInput.split(",").reduce((menuList, menuWithCount) => {
-      const [menu, count] = menuWithCount.trim().split("-");
+    const menuListObject = menuListInput.split(MESSAGE_FACTOR.stringSeperator).reduce((menuList, menuWithCount) => {
+      const [menu, count] = menuWithCount.trim().split(MESSAGE_FACTOR.menuCountSeperator);
       if (menu && count) menuList[menu.trim()] = Number(count);
       return menuList;
     }, {});

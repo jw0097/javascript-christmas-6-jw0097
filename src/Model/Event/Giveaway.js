@@ -1,10 +1,11 @@
 import RestaurantEvent from "./RestaurantEvent.js";
+import { EVENT, RESTAURANT } from "../../constant/restaurant.js";
 
 class Giveaway extends RestaurantEvent {
   implement({ totalAmount }) {
-    if (totalAmount < 120000) return;
+    if (totalAmount < EVENT.giveawayThreshold) return;
     
-    return { giveaway: "샴페인" };
+    return { giveaway: RESTAURANT.giveaway };
   }
 }
 

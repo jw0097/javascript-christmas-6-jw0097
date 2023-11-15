@@ -10,12 +10,12 @@ import {
   NotNumberError,
   OnlyBeverageError,
 } from "./Error.js";
-import { ERROR_MESSAGE } from "../constant/message.js";
-import { ALL_MENU, BEVERAGE } from "../constant/restaurant.js";
+import { ERROR_MESSAGE, MESSAGE_FACTOR } from "../constant/message.js";
+import { ALL_MENU, BEVERAGE, RESTAURANT } from "../constant/restaurant.js";
 
 export const DATE_VALIDATOR = Object.freeze({
   noInput(date) {
-    if (date === "") throw new NoInputError(ERROR_MESSAGE.date);
+    if (date === MESSAGE_FACTOR.noInput) throw new NoInputError(ERROR_MESSAGE.date);
   },
 
   notNumber(date) {
@@ -23,7 +23,7 @@ export const DATE_VALIDATOR = Object.freeze({
   },
 
   invalidNumber(date) {
-    if (date < 1 || date > 31) throw new InvalidNumberError();
+    if (date < RESTAURANT.minDateValue || date > RESTAURANT.maxDateValue) throw new InvalidNumberError();
   },
 
   notInteger(date) {
@@ -33,7 +33,7 @@ export const DATE_VALIDATOR = Object.freeze({
 
 export const MENU_VALIDATOR = Object.freeze({
   noInput({ menuListObject }) {
-    if (Object.keys(menuListObject).length === 0) throw new NoInputError(ERROR_MESSAGE.menu);
+    if (Object.keys(menuListObject).length === MESSAGE_FACTOR.noInputLength) throw new NoInputError(ERROR_MESSAGE.menu);
   },
 
   notMenu({ menuListObject }) {
@@ -45,10 +45,10 @@ export const MENU_VALIDATOR = Object.freeze({
   },
 
   InvalidFormatError({ menuListInput }) {
-    const menuList = menuListInput.trim().split(",");
+    const menuList = menuListInput.trim().split(MESSAGE_FACTOR.stringSeperator);
     const regex = /^\s*[가-힣]+\s*-\s*\d+\s*$/;
     const isInvalidFormat = menuList
-      .filter((menu) => menu !== "")
+      .filter((menu) => menu !== MESSAGE_FACTOR.noInput)
       .some((menu) => !regex.test(menu));
 
     if (isInvalidFormat) throw new InvalidFormatError();
@@ -56,15 +56,15 @@ export const MENU_VALIDATOR = Object.freeze({
 
   invalidCountFormat({ menuListObject }) {
     Object.values(menuListObject).forEach((count) => {
-      if (!Number.isInteger(count) || count < 1) throw new InvalidCountFormatError();
+      if (!Number.isInteger(count) || count < RESTAURANT.minCountValue) throw new InvalidCountFormatError();
     });
   },
 
   duplicated({ menuListObject, menuListInput }) {
     const menuNames = menuListInput
       .trim()
-      .split(",")
-      .filter((string) => string !== "");
+      .split(MESSAGE_FACTOR.stringSeperator)
+      .filter((string) => string !== MESSAGE_FACTOR.noInput);
 
     if (Object.keys(menuListObject).length !== menuNames.length) throw new DuplicatedError();
   },
@@ -78,8 +78,8 @@ export const MENU_VALIDATOR = Object.freeze({
   },
 
   invalidCountRangeError({ menuListObject }) {
-    const totalCount = Object.values(menuListObject).reduce((sum, count) => sum + count, 0);
+    const totalCount = Object.values(menuListObject).reduce((sum, count) => sum + count, RESTAURANT.initialCount);
 
-    if (totalCount > 20) throw new InvalidCountRangeError();
+    if (totalCount > RESTAURANT.maxCountValue) throw new InvalidCountRangeError();
   },
 });

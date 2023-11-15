@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
-import { OUTPUT_MESSAGE } from "../constant/message.js";
-import { ALL_MENU, DISCOUNT_EVENT_LIST, EVENT_LIST } from "../constant/restaurant.js";
+import { MESSAGE_FACTOR, OUTPUT_MESSAGE } from "../constant/message.js";
+import { ALL_MENU, DISCOUNT_EVENT_LIST, EVENT_LIST, RESTAURANT } from "../constant/restaurant.js";
+import { EOL as LINE_SEPARATOR } from "os";
 
 const OutputView = {
   printMessage(message) {
@@ -12,7 +13,7 @@ const OutputView = {
       .map((generator) => {
         return generator({ menuList, eventImplementInfo });
       })
-      .join("\n");
+      .join(LINE_SEPARATOR);
 
     Console.print(eventImplementInfoMessage);
   },
@@ -21,20 +22,20 @@ const OutputView = {
 const messageGenerator = {
   menuList({ menuList }) {
     const menuListMessage = Object.entries(menuList)
-      .map(([menu, count]) => `${menu} ${count}개`)
-      .join("\n");
+      .map(([menu, count]) => `${menu} ${count}${RESTAURANT.countUnit}`)
+      .join(LINE_SEPARATOR);
 
     return `${OUTPUT_MESSAGE.menuList}${menuListMessage}`;
   },
 
   totalAmount({ eventImplementInfo }) {
-    const totalAmountMessage = `${eventImplementInfo.totalAmount.toLocaleString()}원`;
+    const totalAmountMessage = `${eventImplementInfo.totalAmount.toLocaleString()}${RESTAURANT.amountUnit}`;
 
     return `${OUTPUT_MESSAGE.totalAmount}${totalAmountMessage}`;
   },
 
   giveaway({ eventImplementInfo }) {
-    const giveawayMessage = eventImplementInfo.giveaway ? `${eventImplementInfo.giveaway} 1개` : "없음";
+    const giveawayMessage = eventImplementInfo.giveaway ? `${eventImplementInfo.giveaway} ${RESTAURANT.giveawayUnit}` : RESTAURANT.nothing;
 
     return `${OUTPUT_MESSAGE.giveaway}${giveawayMessage}`;
   },
@@ -42,20 +43,20 @@ const messageGenerator = {
   detailImplement({ eventImplementInfo }) {
     const detailImplementMessage = Object.entries(eventImplementInfo).reduce((acc, [eventName, amount]) => {
       if (EVENT_LIST.hasOwnProperty(eventName)) {
-        const amountString = eventName === "giveaway" ? ALL_MENU[amount] : amount;
-        acc.push(`${EVENT_LIST[eventName]}: -${amountString.toLocaleString()}원`);
+        const amountString = eventName === RESTAURANT.giveawayString ? ALL_MENU[amount] : amount;
+        acc.push(`${EVENT_LIST[eventName]}${MESSAGE_FACTOR.eventSeperator} ${RESTAURANT.discountPrefix}${amountString.toLocaleString()}${RESTAURANT.amountUnit}`);
       }
         return acc;
       }, [])
-      .join("\n") || "없음";
+      .join(LINE_SEPARATOR) || RESTAURANT.nothing;
 
     return `${OUTPUT_MESSAGE.detailImplement}${detailImplementMessage}`;
   },
 
   eventImplementAmount({ eventImplementInfo }) {
     const eventImplementAmountMessage = eventImplementInfo.eventImplementAmount
-      ? `-${eventImplementInfo.eventImplementAmount.toLocaleString()}원`
-      : "0원";
+      ? `${RESTAURANT.discountPrefix}${eventImplementInfo.eventImplementAmount.toLocaleString()}${RESTAURANT.amountUnit}`
+      : `${RESTAURANT.noAmount}${RESTAURANT.amountUnit}`;
 
     return `${OUTPUT_MESSAGE.eventImplementAmount}${eventImplementAmountMessage}`;
   },
@@ -64,15 +65,15 @@ const messageGenerator = {
     const totalDiscountAmount = Object.entries(eventImplementInfo).reduce((acc, [eventName, amount]) => {
       if (DISCOUNT_EVENT_LIST.includes(eventName)) acc += amount;
       return acc;
-    }, 0);
+    }, RESTAURANT.noAmount);
 
-    const totalAmountAfterDiscountMessage = `${(eventImplementInfo.totalAmount - totalDiscountAmount).toLocaleString()}원`;
+    const totalAmountAfterDiscountMessage = `${(eventImplementInfo.totalAmount - totalDiscountAmount).toLocaleString()}${RESTAURANT.amountUnit}`;
 
     return `${OUTPUT_MESSAGE.totalAmountAfterDiscount}${totalAmountAfterDiscountMessage}`;
   },
 
   badgeAward({ eventImplementInfo }) {
-    const badgeAwardMessage = eventImplementInfo.badgeAward || "없음";
+    const badgeAwardMessage = eventImplementInfo.badgeAward || RESTAURANT.nothing;
 
     return `${OUTPUT_MESSAGE.badgeAward}${badgeAwardMessage}`;
   },

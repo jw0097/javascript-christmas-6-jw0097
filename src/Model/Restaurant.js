@@ -26,7 +26,7 @@ class Restaurant {
   #calculateTotalAmount(menuList) {
     return Object.entries(menuList).reduce((acc, [menu, count]) => {
       return acc + ALL_MENU[menu] * count;
-    }, 0);
+    }, RESTAURANT.initialAmount);
   }
 
   #getEventImplementInfo({ date, menuList, totalAmount }) {
@@ -42,7 +42,7 @@ class Restaurant {
       if (isNaN(amount)) return acc + ALL_MENU[RESTAURANT.giveaway];
       
       return acc + amount;
-    }, 0);
+    }, RESTAURANT.initialAmount);
   }
 
   #getBadgeAwardInfo(eventImplementAmount) {

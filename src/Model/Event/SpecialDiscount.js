@@ -1,11 +1,11 @@
 import RestaurantEvent from "./RestaurantEvent.js";
-import { STAR_DAY } from "../../constant/restaurant.js";
+import { EVENT, STAR_DAY } from "../../constant/restaurant.js";
 
 class SpecialDiscount extends RestaurantEvent {
   implement({ date, totalAmount }) {
-    if (!STAR_DAY.includes(date) || totalAmount < 10000) return;
+    if (!STAR_DAY.includes(date) || totalAmount < EVENT.minTotalAmount) return;
 
-    return { specialDiscount: 1000 };
+    return { specialDiscount: EVENT.specialDiscountUnit };
   }
 }
 

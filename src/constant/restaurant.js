@@ -37,7 +37,33 @@ export const ALL_MENU = Object.freeze({
 
 export const RESTAURANT = Object.freeze({
   giveaway: "샴페인",
+  giveawayUnit: "1개",
+  giveawayString: "giveaway",
+  countUnit: "개",
+  amountUnit: "원",
+  noAmount: 0,
+  nothing: "없음",
+  discountPrefix: "-",
+  minDateValue: 1,
+  maxDateValue: 31,
+  minCountValue: 1,
+  maxCountValue: 20,
+  initialCount: 0,
+  initialAmount: 0
 });
+
+export const EVENT = Object.freeze({
+  christmasDate: 25,
+  minTotalAmount: 10000,
+  initialXmasDiscountValue: 1000,
+  xmasDdayDiscountUnit: 100,
+  dateMinusValue: 1,
+  weekDiscountUnit: 2023,
+  specialDiscountUnit: 1000,
+  eventYear: 2023,
+  eventMonth: 12-1,
+  giveawayThreshold: 120000
+})
 
 export const BADGE_AWARD_CONDITION = Object.freeze({
   산타: [20000, Infinity],

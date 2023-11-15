@@ -1,10 +1,11 @@
 import RestaurantEvent from "./RestaurantEvent.js";
+import { EVENT } from "../../constant/restaurant.js";
 
 class XmasDdayDiscount extends RestaurantEvent {
   implement({ date, totalAmount }) {
-    if (date > 25 || totalAmount < 10000) return;
+    if (date > EVENT.christmasDate || totalAmount < EVENT.minTotalAmount) return;
     
-    return { xmasDdayDiscount: 1000 + (date - 1) * 100 };
+    return { xmasDdayDiscount: EVENT.initialXmasDiscountValue + (date - EVENT.dateMinusValue) * EVENT.xmasDdayDiscountUnit };
   }
 }
 

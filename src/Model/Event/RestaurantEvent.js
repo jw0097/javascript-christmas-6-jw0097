@@ -1,3 +1,5 @@
+import { EVENT, RESTAURANT } from "../../constant/restaurant";
+
 class RestaurantEvent {
   constructor() {
     if (new.target === RestaurantEvent) 
@@ -9,13 +11,13 @@ class RestaurantEvent {
   }
 
   _calculateDayFromDate(date) {
-    return new Date(2023, 11, date).getDay();
+    return new Date(EVENT.eventYear, EVENT.eventMonth, date).getDay();
   }
 
   _calculateDishCount(menuList, dish) {
     return Object.entries(menuList).reduce((dishCount, [menu, count]) => {
       return Object.keys(dish).includes(menu) ? dishCount + count : dishCount;
-    }, 0);
+    }, RESTAURANT.initialCount);
   }
 }
 
