@@ -1,4 +1,4 @@
-import WeekdayDiscount from "../../../src/Model/Event/WeekDayDiscount.js";
+import WeekdayDiscount from "../../../src/Model/Event/WeekdayDiscount.js";
 import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
 
 let weekdayDiscount;

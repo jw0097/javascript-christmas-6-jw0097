@@ -1,4 +1,4 @@
-import Giveaway from "../../../src/Model/Event/GiveAway.js";
+import Giveaway from "../../../src/Model/Event/Giveaway.js";
 import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
 
 let giveaway;
