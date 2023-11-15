@@ -3,10 +3,6 @@ import { OUTPUT_MESSAGE } from "../constant/message.js";
 import { ALL_MENU, DISCOUNT_EVENT_LIST, EVENT_LIST } from "../constant/restaurant.js";
 
 const OutputView = {
-  printMenu() {
-    Console.print("<주문 메뉴>");
-  },
-
   printMessage(message) {
     Console.print(message);
   },
