@@ -1,19 +1,24 @@
-import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
 import SpecialDiscount from "../../../src/Model/Event/SpecialDiscount.js";
+import RestaurantEvent from "../../../src/Model/Event/RestaurantEvent.js";
 
 let specialDiscount;
+
 describe("SpecialDiscount 클래스 테스트", () => {
   beforeEach(() => {
     specialDiscount = new SpecialDiscount();
   });
 
   test("SpecialDiscount는 RestaurantEvent를 상속받아야 한다.", () => {
+    // then
     expect(specialDiscount instanceof RestaurantEvent).toBe(true);
   });
 
   describe("implement 메서드 테스트", () => {
     test("SpecialDiscount는 implement 메서드를 오버라이딩 해야 한다.", () => {
+      // given
       const date = 25;
+
+      // when - then
       expect(() => specialDiscount.implement({ date })).not.toThrow(Error);
     });
 
@@ -23,7 +28,10 @@ describe("SpecialDiscount 클래스 테스트", () => {
       [10, 1000],
       [24, 1000],
     ])("%s일을 인자로 받으면 %s을 반환해야 한다.", (date, discount) => {
+      // when
       const discountAmount = specialDiscount.implement({ date });
+
+      // then
       expect(discountAmount.specialDiscount).toBe(discount);
     });
 
@@ -33,7 +41,10 @@ describe("SpecialDiscount 클래스 테스트", () => {
       [19, undefined],
       [30, undefined],
     ])("달력에 별이 없는 날을 인자로 받으면 반환값이 없어야 한다.", (date, discount) => {
+      // when
       const discountAmount = specialDiscount.implement({ date });
+
+      // then
       expect(discountAmount).toBe(discount);
     });
   });

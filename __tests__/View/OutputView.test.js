@@ -8,25 +8,33 @@ describe("OutputView 객체 테스트", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
   describe("printMessage 메서드 테스트", () => {
     test("printMessage 메서드가 존재해야 한다.", () => {
+      // then
       expect(typeof OutputView.printMessage).toBe("function");
     });
 
     test("printMessage 메서드가 호출되면 Console.print 메서드가 호출되야 한다.", () => {
+      // given
       const message = "message";
+
+      // when
       OutputView.printMessage(message);
 
+      // then
       expect(Console.print).toBeCalledWith(message);
     });
   });
 
   describe("printEventImplementInfo 메서드 테스트", () => {
     test("printEventImplementInfo 메서드가 존재해야 한다.", () => {
+      // then
       expect(typeof OutputView.printEventImplementInfo).toBe("function");
     });
 
     test("printEventImplementInfo 메서드가 호출되면 Console.print 메서드가 이벤트 결과와 호출되야 한다.", () => {
+      // given
       const menuList = { 티본스테이크: 1, 바비큐립: 1, 초코케이크: 2, 제로콜라: 1 };
       const eventImplementInfo = {
         totalAmount: 142000,
@@ -65,8 +73,10 @@ describe("OutputView 객체 테스트", () => {
         "산타",
       ].join("\n");
 
+      // when
       OutputView.printEventImplementInfo({ menuList, eventImplementInfo });
 
+      // then
       expect(Console.print).toBeCalledWith(eventImplementInfoMessage);
     });
   });
