@@ -1,4 +1,4 @@
-import { EVENT, RESTAURANT } from "../../constant/restaurant";
+import { EVENT, RESTAURANT } from "../../constant/restaurant.js";
 
 class RestaurantEvent {
   constructor() {
