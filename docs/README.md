@@ -15,8 +15,8 @@
 
 ### 순서도
 ---
+![](https://velog.velcdn.com/images/jw0097/post/fea985ce-017c-4aa1-98cb-2df3badce8b5/image.png)
 
-![](https://velog.velcdn.com/images/jw0097/post/fc10a1b5-95b7-49d2-a4c7-75f80fbf8f4b/image.png)
 
 ### 구현할 기능 목록
 
