@@ -17,6 +17,7 @@ const OutputView = {
         return generator({ menuList, eventImplementInfo });
       })
       .join("\n");
+
     Console.print(eventImplementInfoMessage);
   },
 };
@@ -43,16 +44,14 @@ const messageGenerator = {
   },
 
   detailImplement({ eventImplementInfo }) {
-    const detailImplementMessage =
-      Object.entries(eventImplementInfo)
-        .reduce((acc, [eventName, amount]) => {
-          if (EVENT_LIST.hasOwnProperty(eventName)) {
-            const amountString = eventName === "giveaway" ? ALL_MENU[amount] : amount;
-            acc.push(`${EVENT_LIST[eventName]}: -${amountString.toLocaleString()}원`);
-          }
-          return acc;
-        }, [])
-        .join("\n") || "없음";
+    const detailImplementMessage = Object.entries(eventImplementInfo).reduce((acc, [eventName, amount]) => {
+      if (EVENT_LIST.hasOwnProperty(eventName)) {
+        const amountString = eventName === "giveaway" ? ALL_MENU[amount] : amount;
+        acc.push(`${EVENT_LIST[eventName]}: -${amountString.toLocaleString()}원`);
+      }
+        return acc;
+      }, [])
+      .join("\n") || "없음";
 
     return `${OUTPUT_MESSAGE.detailImplement}${detailImplementMessage}`;
   },
@@ -70,9 +69,8 @@ const messageGenerator = {
       if (DISCOUNT_EVENT_LIST.includes(eventName)) acc += amount;
       return acc;
     }, 0);
-    const totalAmountAfterDiscountMessage = `${(
-      eventImplementInfo.totalAmount - totalDiscountAmount
-    ).toLocaleString()}원`;
+
+    const totalAmountAfterDiscountMessage = `${(eventImplementInfo.totalAmount - totalDiscountAmount).toLocaleString()}원`;
 
     return `${OUTPUT_MESSAGE.totalAmountAfterDiscount}${totalAmountAfterDiscountMessage}`;
   },
@@ -83,4 +81,5 @@ const messageGenerator = {
     return `${OUTPUT_MESSAGE.badgeAward}${badgeAwardMessage}`;
   },
 };
+
 export default OutputView;

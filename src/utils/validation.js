@@ -1,5 +1,3 @@
-import { ERROR_MESSAGE } from "../constant/message.js";
-import { ALL_MENU, BEVERAGE } from "../constant/restaurant.js";
 import {
   DuplicatedError,
   InvalidCountFormatError,
@@ -12,6 +10,8 @@ import {
   NotNumberError,
   OnlyBeverageError,
 } from "./Error.js";
+import { ERROR_MESSAGE } from "../constant/message.js";
+import { ALL_MENU, BEVERAGE } from "../constant/restaurant.js";
 
 export const DATE_VALIDATOR = Object.freeze({
   noInput(date) {
@@ -37,9 +37,9 @@ export const MENU_VALIDATOR = Object.freeze({
   },
 
   notMenu({ menuListObject }) {
-    const isMenu = Object.keys(menuListObject).every((menu) => {
-      return Object.keys(ALL_MENU).includes(menu);
-    });
+    const isMenu = Object.keys(menuListObject).every((menu) =>
+      Object.keys(ALL_MENU).includes(menu)
+    );
 
     if (!isMenu) throw new NotMenuError();
   },
@@ -47,7 +47,9 @@ export const MENU_VALIDATOR = Object.freeze({
   InvalidFormatError({ menuListInput }) {
     const menuList = menuListInput.trim().split(",");
     const regex = /^\s*[가-힣]+\s*-\s*\d+\s*$/;
-    const isInvalidFormat = menuList.filter((menu) => menu !== "").some((menu) => !regex.test(menu));
+    const isInvalidFormat = menuList
+      .filter((menu) => menu !== "")
+      .some((menu) => !regex.test(menu));
 
     if (isInvalidFormat) throw new InvalidFormatError();
   },
@@ -63,16 +65,21 @@ export const MENU_VALIDATOR = Object.freeze({
       .trim()
       .split(",")
       .filter((string) => string !== "");
+
     if (Object.keys(menuListObject).length !== menuNames.length) throw new DuplicatedError();
   },
 
   onlyBeverage({ menuListObject }) {
-    const allBeverage = Object.keys(menuListObject).every((menu) => Object.keys(BEVERAGE).includes(menu));
+    const allBeverage = Object.keys(menuListObject).every((menu) =>
+      Object.keys(BEVERAGE).includes(menu)
+    );
+
     if (allBeverage) throw new OnlyBeverageError();
   },
 
   invalidCountRangeError({ menuListObject }) {
     const totalCount = Object.values(menuListObject).reduce((sum, count) => sum + count, 0);
+
     if (totalCount > 20) throw new InvalidCountRangeError();
   },
 });

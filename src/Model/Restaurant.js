@@ -1,5 +1,5 @@
-import { ALL_MENU, RESTAURANT } from "../constant/restaurant.js";
 import Customer from "./Customer.js";
+import { ALL_MENU, RESTAURANT } from "../constant/restaurant.js";
 
 class Restaurant {
   #events;
@@ -32,6 +32,7 @@ class Restaurant {
   #getEventImplementInfo({ date, menuList, totalAmount }) {
     return this.#events.reduce((eventInfo, singleEvent) => {
       const result = singleEvent.implement({ date, menuList, totalAmount });
+
       return { ...eventInfo, ...result };
     }, {});
   }
@@ -39,6 +40,7 @@ class Restaurant {
   #calculateEventImplementAmount(eventImplementInfo) {
     return Object.values(eventImplementInfo).reduce((acc, amount) => {
       if (isNaN(amount)) return acc + ALL_MENU[RESTAURANT.giveaway];
+      
       return acc + amount;
     }, 0);
   }

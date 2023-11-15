@@ -1,8 +1,7 @@
 class RestaurantEvent {
   constructor() {
-    if (new.target === RestaurantEvent) {
+    if (new.target === RestaurantEvent) 
       throw new Error("RestaurantEvent 인스턴스를 생성할 수 없습니다.");
-    }
   }
 
   implement() {

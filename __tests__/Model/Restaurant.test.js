@@ -1,10 +1,10 @@
-import Restaurant from "../../src/Model/Restaurant";
-import XmasDdayDiscount from "../../src/Model/Event/XmasDdayDiscount";
-import WeekdayDiscount from "../../src/Model/Event/WeekDayDiscount";
-import WeekendDiscount from "../../src/Model/Event/WeekendDiscount";
-import SpecialDiscount from "../../src/Model/Event/SpecialDiscount";
-import Giveaway from "../../src/Model/Event/GiveAway";
-import BadgeAward from "../../src/Model/Event/BadgeAward";
+import Restaurant from "../../src/Model/Restaurant.js";
+import XmasDdayDiscount from "../../src/Model/Event/XmasDdayDiscount.js";
+import WeekdayDiscount from "../../src/Model/Event/WeekdayDiscount.js";
+import WeekendDiscount from "../../src/Model/Event/WeekendDiscount.js";
+import SpecialDiscount from "../../src/Model/Event/SpecialDiscount.js";
+import Giveaway from "../../src/Model/Event/Giveaway.js";
+import BadgeAward from "../../src/Model/Event/BadgeAward.js";
 
 let restaurant;
 
